@@ -12,7 +12,11 @@ public class Group implements Shape, Serializable {
     static {
         group = new Group();
     }
+    public int i = 0;
 
+    public void setI(int i) {
+        this.i = i;
+    }
     private List<Shape> shapes = new ArrayList<>();
 
     public static Group group() {
@@ -25,19 +29,38 @@ public class Group implements Shape, Serializable {
 
     @Override
     public double checkDistance(Shape shape) {
+        for (Shape shape1 : shapes) {
+            if (checkDistance2(shape1, shape) < 50) {
+                setI(shapes.indexOf(shape1));
+            }
+        }
         double AC = getX() - shape.getX();
         double BC = getY() - shape.getY();
         return Math.sqrt(AC * AC + BC * BC);
     }
 
+    public double checkDistance2(Shape shape1, Shape shape) {
+        double AC = getX(shape1) - shape.getX();
+        double BC = getY(shape1) - shape.getY();
+        return Math.sqrt(AC * AC + BC * BC);
+    }
+
     @Override
     public double getX() {
-        return shapes.get(0).getX();
+        return shapes.get(i).getX();
     }
 
     @Override
     public double getY() {
-        return shapes.get(0).getY();
+        return shapes.get(i).getY();
+    }
+
+    public double getX(Shape shape) {
+        return shape.getX();
+    }
+
+    public double getY(Shape shape) {
+        return shape.getY();
     }
 
     @Override

@@ -67,6 +67,13 @@ public class Board {
                         if (shapes.get(i).checkDistance(shape1) < 50) {
                             shapes.get(i).moveRight();
                         }
+                        if(shape1 instanceof Group){
+                            for(Shape shape:((Group) shape1).getShapes()){
+                                if(shapes.get(i).checkDistance(shape)<50){
+                                    shapes.get(i).moveRight();
+                                }
+                            }
+                        }
                     }
                 }
                 break;
@@ -96,6 +103,13 @@ public class Board {
                         }
                         if (shapes.get(i).checkDistance(shape1) < 50) {
                             shapes.get(i).moveTop();
+                        }
+                        if(shape1 instanceof Group){
+                            for(Shape shape:((Group) shape1).getShapes()){
+                                if(shapes.get(i).checkDistance(shape)<50){
+                                    shapes.get(i).moveTop();
+                                }
+                            }
                         }
                     }
                 }
@@ -127,6 +141,13 @@ public class Board {
                         if (shapes.get(i).checkDistance(shape1) < 50) {
                             shapes.get(i).moveLeft();
                         }
+                        if(shape1 instanceof Group){
+                            for(Shape shape:((Group) shape1).getShapes()){
+                                if(shapes.get(i).checkDistance(shape)<50){
+                                    shapes.get(i).moveLeft();
+                                }
+                            }
+                        }
                     }
                 }
                 break;
@@ -156,6 +177,13 @@ public class Board {
                         }
                         if (shapes.get(i).checkDistance(shape1) < 50) {
                             shapes.get(i).moveBottom();
+                        }
+                        if(shape1 instanceof Group){
+                            for(Shape shape:((Group) shape1).getShapes()){
+                                if(shapes.get(i).checkDistance(shape)<50){
+                                    shapes.get(i).moveBottom();
+                                }
+                            }
                         }
                     }
                 }
